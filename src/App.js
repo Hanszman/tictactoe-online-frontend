@@ -8,7 +8,6 @@ function App() {
   const cookies = new Cookies();
   const api_key = 'b52r7nyk5b8v';
   const token = cookies.get('token');
-  const serverClient = StreamChat.getInstance(api_key);
   const client = StreamChat.getInstance(api_key);
   if (token) {
     client.connectUser(
