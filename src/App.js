@@ -16,7 +16,7 @@ function App() {
         name: cookies.get('username'),
         firstName: cookies.get('firstName'),
         lastName: cookies.get('lastName'),
-        hashedPassword: cookies.get('hashedPassword'),
+        hashedPassword: cookies.get('hashedPassword')
       },
       token
     ).then((user) => {
