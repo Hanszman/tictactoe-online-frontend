@@ -31,7 +31,7 @@ function Login({setIsAuth}) {
 
     return (
         <div className="login">
-            <label>Login!</label>
+            <label>Login</label>
             <input
                 type="text"
                 placeholder="Username"

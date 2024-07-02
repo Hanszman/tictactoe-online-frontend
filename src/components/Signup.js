@@ -26,7 +26,7 @@ function Signup({setIsAuth}) {
 
     return (
         <div className="signup">
-            <label>Sign Up!</label>
+            <label>Signup</label>
             <input
                 type="text"
                 placeholder="First Name"
@@ -63,7 +63,7 @@ function Signup({setIsAuth}) {
                     }
                 }
             />
-            <button onClick={signUp}>Sign Up</button>
+            <button onClick={signUp}>Signup</button>
         </div>
     );
 }
