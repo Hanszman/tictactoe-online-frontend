@@ -41,18 +41,18 @@ function App() {
     <div className="App">
       {
         isAuth
-          ? (
-            <Chat client={client}>
-              <JoinGame/>
-              <button onClick={logOut}>Logout</button>
-            </Chat>
-          )
-          : (
-            <>
-              <Signup setIsAuth={setIsAuth}/>
-              <Login setIsAuth={setIsAuth}/>
-            </>
-          )
+        ? (
+          <Chat client={client}>
+            <JoinGame/>
+            <button onClick={logOut}>Logout</button>
+          </Chat>
+        )
+        : (
+          <>
+            <Signup setIsAuth={setIsAuth}/>
+            <Login setIsAuth={setIsAuth}/>
+          </>
+        )
       }
     </div>
   );
