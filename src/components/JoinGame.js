@@ -32,7 +32,7 @@ function JoinGame() {
                         <h4>Create Game</h4>
                         <input
                             placeholder="Username of rival..."
-                            onChange={(event) => {setRivalUsername(event.target.value)}}
+                            onChange={(event) => setRivalUsername(event.target.value)}
                         />
                         <button onClick={createChannel}>Join/Start Game</button>
                     </div>
