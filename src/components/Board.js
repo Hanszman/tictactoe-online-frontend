@@ -25,6 +25,7 @@ function Board() {
             );
         }
     };
+    const checkWin = () => {};
     channel.on((event) => {
         if (event.type === 'game-move' && event.user.id !== client.userID) {
             const currentPlayer = event.data.player === 'X' ? 'O' : 'X';
