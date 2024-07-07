@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useChannelStateContext, useChatContext } from 'stream-chat-react';
 import Square from './Square';
+import { Patterns } from './WinningPatterns';
 
 function Board() {
     const [board, setBoard] = useState(['', '', '', '', '', '', '', '', '']);
@@ -25,7 +26,21 @@ function Board() {
             );
         }
     };
-    const checkWin = () => {};
+    const checkWin = () => {
+        Patterns.forEach((currPattern) => {
+            const firstPlayer = board[currPattern[0]];
+            if (firstPlayer == '') return;
+            let foundWinningPattern = true;
+            currPattern.forEach((index) => {
+                if (board[index] !== firstPlayer) {
+                    foundWinningPattern = false;
+                }
+            });
+            if (foundWinningPattern) {
+                alert(`${firstPlayer} wins`);
+            }
+        });
+    };
     channel.on((event) => {
         if (event.type === 'game-move' && event.user.id !== client.userID) {
             const currentPlayer = event.data.player === 'X' ? 'O' : 'X';
