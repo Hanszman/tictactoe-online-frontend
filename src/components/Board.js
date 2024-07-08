@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useChannelStateContext, useChatContext } from 'stream-chat-react';
 import Square from './Square';
 import { Patterns } from './WinningPatterns';
 
-function Board() {
+function Board({result, setResult}) {
     const [board, setBoard] = useState(['', '', '', '', '', '', '', '', '']);
     const [player, setPlayer] = useState('X');
     const [turn, setTurn] = useState('X');
@@ -37,10 +37,14 @@ function Board() {
                 }
             });
             if (foundWinningPattern) {
-                alert(`${firstPlayer} wins`);
+                alert('Winner: ', board[currPattern[0]]);
+                setResult({winner: board[currPattern[0]], state: 'Won'});
             }
         });
     };
+    useEffect(() => {
+        checkWin();
+    }, [board]);
     channel.on((event) => {
         if (event.type === 'game-move' && event.user.id !== client.userID) {
             const currentPlayer = event.data.player === 'X' ? 'O' : 'X';
