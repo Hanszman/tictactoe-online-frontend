@@ -42,8 +42,21 @@ function Board({result, setResult}) {
             }
         });
     };
+    const checkIfTie = () => {
+        let filled = true;
+        board.forEach((square) => {
+            if (square === '') {
+                filled = false;
+            }
+        });
+        if (filled) {
+            alert('Game tied!');
+            setResult({winne: 'none', state: 'Tie'})
+        }
+    };
     useEffect(() => {
         checkWin();
+        checkIfTie();
     }, [board]);
     channel.on((event) => {
         if (event.type === 'game-move' && event.user.id !== client.userID) {
