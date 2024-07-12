@@ -3,7 +3,7 @@ import Board from './Board';
 import { Window, MessageList, MessageInput } from 'stream-chat-react';
 import './Chat.css';
 
-function Game({channel}) {
+function Game({channel, setChannel}) {
     const [playersJoined, setPlayersJoined] = useState(channel.state.watcher_count === 2);
     const [result, setResult] = useState({winner: 'none', state: 'none'});
     channel.on('user.watching.start', (event) => {
@@ -24,7 +24,21 @@ function Game({channel}) {
                 />
                 <MessageInput noFiles />
             </Window>
-            {/* LEAVE GAME BUTTON */}
+            <button
+                onClick={
+                    async () => {
+                        await channel.stopWatching();
+                        setChannel(null);
+                    }
+                }
+            >
+                Leave Game
+            </button>
+            {
+                result.state !== 'none'
+                ? <h1>{result.state === 'Won' ? `Winner: ${result.winner}` : 'Game tied!'}</h1>
+                : ''
+            }
         </div>
     );
 };

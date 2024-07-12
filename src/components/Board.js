@@ -37,7 +37,6 @@ function Board({result, setResult}) {
                 }
             });
             if (foundWinningPattern) {
-                alert('Winner: ', board[currPattern[0]]);
                 setResult({winner: board[currPattern[0]], state: 'Won'});
             }
         });
@@ -50,13 +49,12 @@ function Board({result, setResult}) {
             }
         });
         if (filled) {
-            alert('Game tied!');
-            setResult({winne: 'none', state: 'Tie'})
+            setResult({winner: 'none', state: 'Tie'})
         }
     };
     useEffect(() => {
-        checkWin();
         checkIfTie();
+        checkWin();
     }, [board]);
     channel.on((event) => {
         if (event.type === 'game-move' && event.user.id !== client.userID) {
