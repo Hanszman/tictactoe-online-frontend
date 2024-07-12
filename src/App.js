@@ -9,7 +9,7 @@ import Cookies from 'universal-cookie';
 
 function App() {
   const cookies = new Cookies();
-  const api_key = 'b52r7nyk5b8v';
+  const api_key = '';
   const token = cookies.get('token');
   const client = StreamChat.getInstance(api_key);
   const [isAuth, setIsAuth] = useState(false);
